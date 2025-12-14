@@ -5,7 +5,8 @@
     <!--Seo Metaetiquetas-->
     <meta
       name="description"
-      content="Diseñamos, fabricamos e instalamos carteles, ploteados, letras corpóreas y señalética en Ciudad del Este."
+      data-i18n="meta_description"
+      content=""
     />
     <meta
       name="keywords"
@@ -14,9 +15,7 @@
     <meta name="author" content="WHILOBUS" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>
-      WHILOBUS | Carteles, Letras Corpóreas, Ploteados y Publicidad en Ciudad
-      del Este
+    <title data-i18n="meta_title">
     </title>
 
     <!-- JSON-LD para SEO -->
@@ -77,9 +76,6 @@
   </head>
 
   <body>
-    <div id="preloader">
-      <img src="img/nuevo-logo.png" alt="WHILOBUS Logo" class="logo-brillo"/>
-    </div>
     <!-- Overlay para fondo oscuro -->
     <div class="menu-overlay" id="menu-overlay"></div>
 
@@ -95,9 +91,15 @@
       </button>
 
       <!-- Logo en el header -->
-      <div class="header-logo-mobile fade-scroll fade-scroll-up">
+      <div class="header-logo-mobile">
         <img src="img/nuevo-logo.png" alt="WHILOBUS" />
       </div>
+
+      <select id="lang" aria-label="Seleccionar idioma">
+        <option value="es">ES</option>
+        <option value="en">EN</option>
+        <option value="pt">PT</option>
+      </select>
     </header>
 
     <!-- Menú de navegación -->
@@ -120,14 +122,14 @@
         </button>
       </div>
 
-      <ul class="fade-scroll fade-scroll-left">
-        <li><a href="carteles.html">Carteles Front & Backlight</a></li>
-        <li><a href="letras-corporeas.html">Letras Corpóreas</a></li>
-        <li><a href="totems.html">Tótems Publicitarios</a></li>
-        <li><a href="fachadas-acm.html">Fachadas en ACM</a></li>
-        <li><a href="volantes-tarjetas.html">Volantes - Tarjetas</a></li>
-        <li><a href="senaleticas.html">Señaléticas</a></li>
-        <li><a href="ploteados.html">Ploteados</a></li>
+      <ul>
+        <li><a href="carteles.html" data-i18n="menu_carteles"></a></li>
+        <li><a href="letras-corporeas.html" data-i18n="menu_letras"></a></li>
+        <li><a href="totems.html" data-i18n="menu_totems"></a></li>
+        <li><a href="fachadas-acm.html" data-i18n="menu_fachadas"></a></li>
+        <li><a href="volantes-tarjetas.html" data-i18n="menu_volantes"></a></li>
+        <li><a href="senaleticas.html" data-i18n="menu_senaleticas"></a></li>
+        <li><a href="ploteados.html" data-i18n="menu_ploteados"></a></li>
       </ul>
     </nav>
 
@@ -150,25 +152,13 @@
         <!-- Título centrado sobre el video -->
         <div class="hero-contenido">
           <div class="contenido-superpuesto container">
-            <h1 class="fade-scroll fade-scroll-right">
-              	SOLUCIONES GRÁFICAS
-                <br>
-                Y PUBLICITARIAS PARA
-                <br>
-                NEGOCIOS EN
-                <br>
-                PARAGUAY
+            <h1 data-i18n="hero_title">
             </h1>
             <section class="contenido-post-video">
-              <p class="fade-scroll fade-scroll-left">
-                Diseñamos, fabricamos e instalamos carteles, ploteados, letras
-                corpóreas y más para potenciar la presencia de tu marca.
+              <p data-i18n="hero_text">
               </p>
               <a
-                href="#servicios"
-                class="btn-servicios fade-scroll fade-scroll-up"
-                >Ver Servicios</a
-              >
+                href="#servicios" data-i18n="hero_button"></a>
             </section>
           </div>
         </div>
@@ -177,21 +167,17 @@
       <!-- SERVICIOS DESTACADOS -->
       <section id="servicios" class="servicios">
         <div class="container">
-          <h2 class="fade-scroll fade-scroll-up">
-            Servicios Publicitarios Destacados
-          </h2>
+          <h2 data-i18n="serv_top"></h2>
           <div class="grid-servicios">
-            <article class="fade-scroll fade-scroll-left">
-              <h3>Carteles Frontlight, Backlight y en ACM</h3>
-              <p>
-                Fabricación de carteles luminosos y rígidos para interior y
-                exterior. Alta visibilidad garantizada.
+            <article>
+              <h3 data-i18n="serv_carteles_title"></h3>
+              <p data-i18n="serv_carteles_text">
               </p>
 
               <!-- Carrusel dentro del artículo -->
               <div class="carousel mini-carousel">
                 <button
-                  class="carousel-btn prev fade-scroll fade-scroll-left"
+                  class="carousel-btn prev"
                   aria-label="Anterior"
                   role="button"
                 >
@@ -221,7 +207,7 @@
                 </div>
 
                 <button
-                  class="carousel-btn next fade-scroll fade-scroll-right"
+                  class="carousel-btn next"
                   aria-label="Siguiente"
                   role="button"
                 >
@@ -240,11 +226,12 @@
               </div>
               <a
                 href="carteles.html"
-                class="btn-ver-mas fade-scroll fade-scroll-scale"
-                >Ver más sobre carteles</a
+                class="btn-ver-mas"
+                data-i18n="btn_carteles"
+              ></a
               >
             </article>
-            <article class="fade-scroll fade-scroll-left">
+            <article>
               <h3>Ploteos de Vidrieras y Vehículos</h3>
               <p>
                 Aplicación de vinilo de corte e impresión para negocios, autos,
@@ -254,7 +241,7 @@
               <!-- Carrusel dentro del artículo -->
               <div class="carousel mini-carousel">
                 <button
-                  class="carousel-btn prev fade-scroll fade-scroll-left"
+                  class="carousel-btn prev"
                   aria-label="Anterior"
                   role="button"
                 >
@@ -265,7 +252,7 @@
                   />
                 </button>
 
-                <div class="carousel-track fade-scroll fade-scroll-scale">
+                <div class="carousel-track">
                   <img
                     src="img/ploteado-vehicular-publicidad-vehiculo.webp"
                     alt="Cartel ejemplo 1"
@@ -284,7 +271,7 @@
                 </div>
 
                 <button
-                  class="carousel-btn next fade-scroll fade-scroll-right"
+                  class="carousel-btn next"
                   aria-label="Siguiente"
                   role="button"
                 >
@@ -303,11 +290,11 @@
               </div>
               <a
                 href="ploteados.html"
-                class="btn-ver-mas fade-scroll fade-scroll-scale"
+                class="btn-ver-mas"
                 >Ver más sobre ploteados</a
               >
             </article>
-            <article class="fade-scroll fade-scroll-left">
+            <article>
               <h3>Letras Corpóreas con o sin Iluminación</h3>
               <p>
                 Soluciones visuales modernas en 3D, con iluminación LED frontal
@@ -317,7 +304,7 @@
               <!-- Carrusel dentro del artículo -->
               <div class="carousel mini-carousel">
                 <button
-                  class="carousel-btn prev fade-scroll fade-scroll-left"
+                  class="carousel-btn prev"
                   aria-label="Anterior"
                   role="button"
                 >
@@ -328,7 +315,7 @@
                   />
                 </button>
 
-                <div class="carousel-track fade-scroll fade-scroll-scale">
+                <div class="carousel-track">
                   <img
                     src="img/letras-acrilicas-interior-negocio.webp"
                     alt="Cartel ejemplo 1"
@@ -347,7 +334,7 @@
                 </div>
 
                 <button
-                  class="carousel-btn next fade-scroll fade-scroll-right"
+                  class="carousel-btn next"
                   aria-label="Siguiente"
                   role="button"
                 >
@@ -366,7 +353,7 @@
               </div>
               <a
                 href="letras-corporeas.html"
-                class="btn-ver-mas fade-scroll fade-scroll-scale"
+                class="btn-ver-mas"
                 >Ver más sobre corpóreas</a
               >
             </article>
@@ -377,52 +364,20 @@
       <!-- VENTAJAS COMPETITIVAS -->
       <section class="ventajas">
         <div class="container">
-          <h2 class="fade-scroll fade-scroll-up">¿Por qué elegir WHILOBUS?</h2>
-          <ul class="fade-scroll fade-scroll-left">
-            <li>Atención personalizada en Ciudad del Este y alrededores.</li>
-            <li>Materiales premium y excelente acabado en cada proyecto.</li>
-            <li>Entrega rápida, instalación y soporte postventa.</li>
+          <h2 data-i18n="why_title"></h2>
+          <ul>
+            <li data-i18n="why_1"></li>
+            <li data-i18n="why_2"></li>
+            <li data-i18n="why_3"></li>
           </ul>
         </div>
       </section>
-
-      <!-- UBICACIÓN / MAPA -->
-      <section class="ubicacion">
-        <div class="container">
-          <h2 class="fade-scroll fade-scroll-up">
-            Ubicación de WHILOBUS en Ciudad del Este
-          </h2>
-          <p class="fade-scroll fade-scroll-left">
-            Nos encontramos en Ciudad del Este, Paraguay. Visitá nuestro local o
-            escribinos para asesoramiento gratuito.
-          </p>
-          <a
-            href="https://wa.me/595994923174"
-            class="btn-servicios"
-            target="_blank"
-            rel="noopener"
-            >Solicitá tu presupuesto</a
-          >
-          <iframe
-            title="Ubicación de WHILOBUS en Ciudad del Este"
-            class="fade-scroll fade-scroll-scale"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3601.6668927593896!2d-54.64858822618436!3d-25.48279613497976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94f685c6557b7e93%3A0xc694e781c6ee9a4!2sWhilobus!5e0!3m2!1ses-419!2spy!4v1748822987098!5m2!1ses-419!2spy"
-            width="100%"
-            height="200"
-            style="border: 0"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
-      </section>
     </main>
-
-    <footer class="fade-scroll fade-scroll-up">
+    <footer>
       <div class="footer-content">
         <div class="social-section">
-          <p class="social-title fade-scroll fade-scroll-up">Redes Sociales</p>
-          <div class="social-icons fade-scroll fade-scroll-scale">
+          <p class="social-title" data-i18n="footer_social"></p>
+          <div class="social-icons">
             <a
               href="https://www.facebook.com/profile.php?id=100085495839015&mibextid=ZbWKwL"
               target="_blank"
@@ -446,10 +401,8 @@
             </a>
           </div>
           <div class="footer-line"></div>
-          <p class="footer-text">
-            &copy; <span id="year"></span> WHILOBUS. Todos los derechos
-            reservados. Comercio de Servicios<br />
-            Publicitarios Ltda - Ciudad del Este, Km 5/2 La Blanca.
+          <p class="footer-text" data-i18n="footer_legal">
+            &copy; <span id="year"></span>
           </p>
         </div>
       </div>
