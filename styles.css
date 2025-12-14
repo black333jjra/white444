@@ -1,65 +1,60 @@
-/* ============ GENERAL ============ */
+/* ROOT */
+:root {
+  --btn-color: #0071e3;
+  --bg-sec: #252525;
+  --bg-color: #ffffff;
+  --tx-color: #252525;
+  --tx-sec: #ffffff;
+  --sec-color: #c4c4c4;
+  --shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* ============ GENERAL Y RESET ============ */
 body {
   font-family: "Poppins", sans-serif;
 }
 
-html,
-body {
+html, body, main {
   overflow-x: hidden;
-  height: 100%;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
 }
-
-main {
-  flex: 1;
-  padding-top: 80px;
-}
-
 /* ============ HEADER ============ */
 header {
-  width: 100%;
-  height: 60px;
-  background: linear-gradient(to bottom, #ffffff 60%);
+  width: 100dvw;
+  height: 80px;
+  background-color: var(--bg-color);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px;
   position: fixed;
-  top: 0;
-  left: 0;
   z-index: 1000;
 }
 
-.header-logo-mobile {
-  width: 100%;
-  text-align: center;
+.header-logo-mobile img {
+  width: 150px;
 }
 
-.header-logo-mobile img {
-  width: 70%;
-  max-width: 150px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
+#lang {
+  border-style: none;
+  box-shadow: var(--shadow);
+  border-radius: 20%;
+  width: 40px;
+  height: 30px;
+  color: var(--tx-color);
+  margin: 30px;
 }
 
 /* ============ BOTÓN HAMBURGUESA ============ */
 .menu-toggle {
   background: none;
   border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 35px;
   height: 35px;
-  position: fixed;
-  left: 10px;
-  top: 5px;
-  cursor: pointer;
   z-index: 1100;
+  margin: 20px;
 }
 
 .hamburger,
@@ -67,7 +62,7 @@ header {
 .hamburger::after {
   content: "";
   display: block;
-  background-color: #333;
+  background-color: var(--tx-color);
   height: 3px;
   width: 25px;
   border-radius: 2px;
@@ -76,7 +71,6 @@ header {
 }
 
 .hamburger {
-  top: 50%;
   transform: translateY(-50%);
   position: relative;
 }
@@ -108,9 +102,9 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
+  width: 100dvw;
+  height: 100dvh;
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: 1000;
   display: none;
 }
@@ -123,11 +117,10 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
-  width: 85%;
-  max-width: 320px;
-  background-color: #fff;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  height: 100dvh;
+  width: 80dvw;
+  background-color: var(--bg-color);
+  box-shadow: var(--shadow);
   z-index: 1050;
   opacity: 0;
   pointer-events: none;
@@ -156,20 +149,10 @@ header {
   display: block;
   padding: 16px 20px;
   text-decoration: none;
-  color: #333;
+  color: var(--tx-color);
   font-weight: 600;
   font-size: 20px;
   transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
-}
-
-.navbar a:hover {
-  background-color: #f9f9f9;
-}
-
-.navbar a.hover-effect,
-.navbar a:focus {
-  color: #7f7f7f;
-  transform: translateX(5px);
 }
 
 /* ============ ENCABEZADO DEL MENÚ ============ */
@@ -177,18 +160,16 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 20px;
   border-bottom: 1px solid #ddd;
+  padding: 20px 30px;
 }
 
 .menu-logo-container {
   display: flex;
-  justify-content: flex-end;
-  padding-right: 10px;
 }
 
 .menu-logo {
-  height: 20px;
+  height: 25px;
   width: auto;
 }
 
@@ -196,58 +177,13 @@ header {
   background: none;
   border: none;
   font-size: 28px;
-  cursor: pointer;
-  color: #333;
-  margin-left: 20px;
-}
-
-/* ============ MAIN CONTENT ============ */
-main h1 {
-  font-size: 28px;
-  color: #333;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-main p {
-  font-size: 16px;
-  color: #444;
-  line-height: 1.6;
-  text-align: center;
-}
-
-main img {
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 100%;
-  height: auto;
-}
-
-/* ============ GRILLA RESPONSIVE DE PRODUCTOS ============ */
-.product-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 20px;
-}
-
-@media (min-width: 600px) {
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 900px) {
-  .product-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  color: var(--tx-color);
 }
 
 /* ============ FOOTER ============ */
 footer {
-  background-color: #000;
-  color: #fff;
+  background-color: var(--bg-sec);
+  color: var(--tx-sec);
   padding: 20px;
   box-sizing: border-box;
 }
@@ -294,15 +230,6 @@ footer .social-icons a img {
   line-height: 1.4;
 }
 
-/* ============ PANTALLA INICIO CON LOGO ============ */
-.logo-inicio {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #fff;
-}
-
 .logo-inicio img {
   max-width: 80%;
   height: auto;
@@ -311,28 +238,20 @@ footer .social-icons a img {
 /* ============ CARRUSEL AUTOMÁTICO ============ */
 .carousel {
   overflow: hidden;
-  width: 100vw;
-  height: 40vh;
+  width: 100dvw;
+  height: 40dvh;
   position: relative;
-}
-
-@media (min-width: 768px) {
-  .carousel{
-    height: 60vh;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
 }
 
 .carousel-track {
   display: flex;
-  width: 300vw;
+  width: 300dvw;
   height: 100%;
-  transition: transform 0.5s ease-in-out;
+  transition: slide infinite ease-in-out;
 }
 
 .carousel-track img {
-  width: 100vw;
+  width: 100dvw;
   height: 100%;
   object-fit: cover;
   flex-shrink: 0;
@@ -367,19 +286,13 @@ footer .social-icons a img {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.6);
-  color: #fff;
   border: none;
   font-size: 2rem;
   padding: 0.5rem 1rem;
-  cursor: pointer;
   z-index: 10;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
-}
-
-.carousel-btn:hover {
-  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  transition: background-color 0.3s ease-in-out;
+  box-shadow: var(--shadow);
 }
 
 .carousel-btn.prev {
@@ -408,8 +321,8 @@ footer .social-icons a img {
 }
 
 .carousel-indicators .dot {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   background-color: rgba(255, 255, 255, 0.5); /* color base */
   border-radius: 50%;
   cursor: pointer;
@@ -417,91 +330,8 @@ footer .social-icons a img {
 }
 
 .carousel-indicators .dot.active {
-  background-color: white; /* color del dot activo */
+  background-color: var(--tx-sec); /* color del dot activo */
   transform: scale(1.2);   /* agrandalo un poco para destacarlo */
-}
-
-
-@media (max-width: 768px) {
-  .carousel-btn {
-    font-size: 1.5rem;
-    padding: 0.3rem 0.7rem;
-  }
-}
-/*Efectos de animación
-/* Base fade-scroll */
-.fade-scroll {
-  opacity: 0;
-  transition: opacity 2s ease, transform 2s ease;
-  will-change: opacity, transform;
-}
-
-/* Visible (fade-in) */
-.fade-scroll.visible {
-  opacity: 1;
-}
-
-/* Efecto 1: fade-scroll-up */
-.fade-scroll-up.hidden {
-  transform: translateY(30px);
-}
-.fade-scroll-up.visible {
-  transform: translateY(0);
-}
-
-/* Efecto 2: fade-scroll-left */
-.fade-scroll-left.hidden {
-  transform: translateX(-30px);
-}
-.fade-scroll-left.visible {
-  transform: translateX(0);
-}
-
-/* Efecto 3: fade-scroll-right */
-.fade-scroll-right.hidden {
-  transform: translateX(30px);
-}
-.fade-scroll-right.visible {
-  transform: translateX(0);
-}
-
-/* Efecto 4: fade-scroll-scale */
-.fade-scroll-scale.hidden {
-  transform: scale(0.8);
-}
-.fade-scroll-scale.visible {
-  transform: scale(1);
-}
-
-/* Efecto 5: fade-scroll-rotate */
-.fade-scroll-rotate.hidden {
-  transform: rotate(-15deg) translateY(20px);
-}
-.fade-scroll-rotate.visible {
-  transform: rotate(0deg) translateY(0);
-}
-
-/* Para animar sin fade-scroll (solo visible) */
-.animar {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 2s ease, transform 2s ease;
-  will-change: opacity, transform;
-}
-.animar.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.hidden {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1s ease;
-}
-
-.visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* ============ BOTÓN FLOTANTE DE WHATSAPP ============ */
@@ -517,7 +347,7 @@ footer .social-icons a img {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--shadow);
   transition: transform 0.2s ease;
 }
 
@@ -537,9 +367,9 @@ footer .social-icons a img {
   background-color: transparent;
   position: relative;
   overflow: hidden;
-  width: 100vw;
-  height: 100vh;
-  color: white;
+  width: 100dvw;
+  height: 100dvh;
+  color: var(--bg-color);
 }
 
 .video-fondo {
@@ -549,20 +379,21 @@ footer .social-icons a img {
   margin: 0;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100dvw;
+  height: 100dvh;
   object-fit: cover; /* para que el video cubra todo sin deformarse */
   z-index: -1; /* que quede detrás del contenido */
 }
 
 .hero-contenido {
-  width: 100%;
-  height: 100%;
+  width: 100dvw;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0;
   text-align: center;
+  gap: 200px;
 }
 
 .hero-contenido h1 {
@@ -570,58 +401,14 @@ footer .social-icons a img {
   font-family: Impact, 'Arial Narrow Bold', sans-serif;
   text-align: center;
   letter-spacing: 1.5px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-  color: white;
-}
-
-@media (min-width: 768px) {
-  .hero-contenido h1 {
-    font-size: clamp(2.5rem, 7vw, 4.5rem);
-    font-weight: 800;
-    color: white;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-    line-height: 1.2;
-    margin: 0;
-    text-align: center; /* si querés cambiar la alineación */
-  }
+  text-shadow: var(--shadow);
+  color: var(--tx-sec);
 }
 
 .hero-contenido p {
-  color: white;
+  color: var(--tx-sec);
   font-size: 1.2rem;
-  margin-top: 1rem;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5); /* Opcional para mayor legibilidad */
-}
-
-.contenido-post-video p {
-  margin-top: 1rem;
-  text-align: left;
-  padding-left: 1.5rem; /* Ajustá el valor a tu gusto */
-}
-
-.contenido-superpuesto {
-  max-width: 900px;
-  width: 100%;
-  z-index: 2;
-}
-
-.btn-servicios {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background-color: white; /* gris oscuro */
-  color: black;
-  border-radius: 12px; /* bordes redondeados */
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  margin-top: 1.5rem;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* sombra opcional */
-  transition: background-color 0.3s ease;
-}
-
-.btn-servicios:hover {
-  background-color: #444; /* tono más claro al pasar el mouse */
+  text-shadow: var(--shadow);
 }
 
 .grid-servicios article {
@@ -640,47 +427,9 @@ footer .social-icons a img {
   transition: background-color 0.3s;
 }
 
-.btn-ver-mas:hover {
-  background-color: #222;
-}
 .servicios h2 {
+  padding: 0 30px;
   text-align: center;
   font-size: 2rem;
   margin-bottom: 2rem;
-}
-
-/* ===== PRELOADER ===== */
-#preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: white; /* Fondo oscuro elegante */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-/* ANIMACIÓN DE BRILLO EN LOGO */
-#preloader .logo-brillo {
-  width: 120px; /* o el tamaño que prefieras */
-  filter: drop-shadow(0 0 2px #fff);
-  animation: brilloLogo 2s ease-in-out infinite alternate;
-}
-
-@keyframes brilloLogo {
-  0% {
-    filter: drop-shadow(0 0 2px #ffffff);
-    transform: scale(1);
-  }
-  50% {
-    filter: drop-shadow(0 0 10px #676767);
-    transform: scale(1.05);
-  }
-  100% {
-    filter: drop-shadow(0 0 2px #ffffff);
-    transform: scale(1);
-  }
 }
