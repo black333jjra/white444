@@ -30,214 +30,47 @@ navLinks.forEach(link => {
 // ==== AÑO AUTOMÁTICO ====
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// ==== HOVER PERSONALIZADO (si no se usa en CSS) ====
-navLinks.forEach(link => {
-  link.addEventListener('mouseenter', () => link.classList.add('hover-effect'));
-  link.addEventListener('mouseleave', () => link.classList.remove('hover-effect'));
-});
+// Idiomas del sistema
+const cacheIdiomas = {};
 
-// ==== CARRUSELES ====
-function initializeCarousel(carouselElement) {
-  const track = carouselElement.querySelector('.carousel-track');
-  const dots = carouselElement.querySelectorAll('.dot');
-  const prevBtn = carouselElement.querySelector('.carousel-btn.prev');
-  const nextBtn = carouselElement.querySelector('.carousel-btn.next');
-  const images = track.querySelectorAll('img');
-
-  let currentIndex = 0;
-  let isDragging = false;
-  let startX = 0;
-  let currentTranslate = 0;
-  let autoSlide;
-  let resizeTimeout;
-
-function updateCarouselPosition(index) {
-  const slideWidth = images[0].clientWidth;
-  track.style.transform = `translateX(-${slideWidth * index}px)`;
-  dots.forEach(dot => dot.classList.remove('active'));
-  if (dots[index % images.length]) {
-    dots[index % images.length].classList.add('active');
+async function cargarIdioma(lang) {
+  if (cacheIdiomas[lang]) {
+    aplicarIdioma(cacheIdiomas[lang], lang);
+    return;
   }
-  currentIndex = index % images.length;
+
+  const res = await fetch(`idiomas/${lang}.json`);
+  const textos = await res.json();
+  cacheIdiomas[lang] = textos;
+
+  aplicarIdioma(textos, lang);
 }
 
-  function goToSlide(index) {
-    updateCarouselPosition(index);
-    resetAutoSlide();
-  }
-
-  // Botones de navegación
-  prevBtn?.addEventListener("click", () => {
-    goToSlide((currentIndex - 1 + images.length) % images.length);
+function aplicarIdioma(textos, lang) {
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    el.innerHTML = textos[el.dataset.i18n];
   });
 
-nextBtn?.addEventListener("click", () => {
-  if (currentIndex === images.length - 1) {
-    updateCarouselPosition(currentIndex + 1);
-    setTimeout(() => {
-      track.style.transition = 'none';
-      updateCarouselPosition(0);
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          track.style.transition = '';
-        });
-      });
-    }, 500);
-  } else {
-    goToSlide(currentIndex + 1);
-  }
-});
-
-  // Puntos (dots)
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      const index = parseInt(dot.dataset.index);
-      goToSlide(index);
-    });
+  document.querySelectorAll("meta[data-i18n]").forEach(meta => {
+    meta.setAttribute("content", textos[meta.dataset.i18n]);
   });
 
-  // Deslizamiento táctil y con mouse
-  function startDrag(e) {
-    isDragging = true;
-    startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-    currentTranslate = -currentIndex * images[0].clientWidth;
-  }
-
-  function dragMove(e) {
-    if (!isDragging) return;
-    const x = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-    const moveX = x - startX;
-    track.style.transform = `translateX(${currentTranslate + moveX}px)`;
-  }
-
-  function endDrag(e) {
-    if (!isDragging) return;
-    isDragging = false;
-    const slideWidth = images[0].clientWidth;
-    const movedX = (e.type.includes('touch') ? e.changedTouches[0].clientX : e.clientX) - startX;
-    if (movedX < -50 && currentIndex < images.length - 1) {
-      currentIndex++;
-    } else if (movedX > 50 && currentIndex > 0) {
-      currentIndex--;
-    }
-    updateCarouselPosition(currentIndex);
-    resetAutoSlide();
-  }
-
-  track.addEventListener('mousedown', startDrag);
-  track.addEventListener('touchstart', startDrag, { passive: true });
-
-  window.addEventListener('mousemove', dragMove);
-  window.addEventListener('touchmove', dragMove, { passive: true });
-
-  window.addEventListener('mouseup', endDrag);
-  window.addEventListener('touchend', endDrag);
-
-  // Auto-slide
-function startAutoSlide() {
-  autoSlide = setInterval(() => {
-    if (currentIndex === images.length - 1) {
-      // Ir a la última imagen con animación
-      updateCarouselPosition(currentIndex + 1);
-
-      // Después del slide animado, cortar la animación y volver a 0 sin que se note
-      setTimeout(() => {
-        track.style.transition = 'none';
-        updateCarouselPosition(0);
-        // Reforzamos transición después del salto
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            track.style.transition = '';
-          });
-        });
-      }, 500); // tiempo igual a tu transición en CSS
-    } else {
-      updateCarouselPosition(currentIndex + 1);
-    }
-  }, 4000);
+  document.documentElement.lang = lang;
 }
 
-  function resetAutoSlide() {
-    clearInterval(autoSlide);
-    startAutoSlide();
-  }
-
-  // Reajuste con debounce en resize
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      updateCarouselPosition(currentIndex);
-    }, 200);
-  });
-
-  updateCarouselPosition(0);
-  startAutoSlide();
+function setIdioma(lang) {
+  localStorage.setItem("idioma", lang);
+  cargarIdioma(lang);
 }
 
-// ==== ANIMACIONES DE ENTRADA ====
-const elementos = document.querySelectorAll('.animar, [class*="fade-scroll"]');
-
-// Ocultar todos inicialmente
-elementos.forEach(el => el.classList.add('hidden'));
-
-// Observer
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    const el = entry.target;
-    if (entry.isIntersecting) {
-      el.classList.add('visible');
-    } else {
-      el.classList.remove('visible');
-    }
-  });
-}, {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px',
+document.getElementById("lang").addEventListener("change", e => {
+  setIdioma(e.target.value);
 });
 
-// Observar todos
-elementos.forEach(el => observer.observe(el));
+const guardado = localStorage.getItem("idioma");
+const nav = navigator.language.slice(0,2);
+const soportados = ["es","pt","en"];
 
-// PRELOADER Y animaciones visibles tras removerlo
-window.addEventListener("load", function () {
-  const preloader = document.getElementById("preloader");
-  if (preloader) {
-    preloader.style.opacity = "0";
-    preloader.style.pointerEvents = "none";
-    setTimeout(() => {
-      preloader.remove();
-
-      // Forzar animación de los que ya son visibles después de remover preloader
-      elementos.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        const yaVisible = rect.top < window.innerHeight && rect.bottom > 0;
-        if (yaVisible) {
-          el.classList.add('visible');
-        }
-      });
-    }, 1000);
-  }
-});
-
-// Iniciar carruseles mini si existen
-document.querySelectorAll('.mini-carousel').forEach(carousel => {
-  initializeCarousel(carousel);
-});
-
-console.log("Animaciones iniciadas");
-
-entries.forEach(entry => {
-  const el = entry.target;
-  if (entry.isIntersecting) {
-    console.log("Elemento visible:", el);
-  }
-});
-
-window.addEventListener("load", function () {
-  const preloader = document.getElementById("preloader");
-  preloader.style.transition = "opacity 1s ease";
-  preloader.style.opacity = "0";
-  setTimeout(() => {
-    preloader.style.display = "none"; // <- ocultar completamente
-  }, 1000);
-});
+const inicial = guardado ?? (soportados.includes(nav) ? nav : "es");
+cargarIdioma(inicial);
+document.getElementById("lang").value = inicial;
