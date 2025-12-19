@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
 /* ROOT */
 :root {
   --btn-color: #0071e3;
@@ -29,8 +31,6 @@
   -ms-user-select: none;     /* Edge antiguo */
   user-select: none;         /* Estándar */
 }
-
-@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 
 body {
   scroll-behavior: smooth;
@@ -440,3 +440,4 @@ footer .social-icons a img {
   height: auto;
 
 }
+
