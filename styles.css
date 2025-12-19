@@ -30,13 +30,7 @@
   user-select: none;         /* Estándar */
 }
 
-@font-face {
-  font-family: "BBHBogle";
-  src: url("../fonts/BBHBogle-Regular.ttf") format(truetype);
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 
 body {
   scroll-behavior: smooth;
@@ -444,4 +438,5 @@ footer .social-icons a img {
 .logo-inicio img {
   max-width: 80%;
   height: auto;
+
 }
