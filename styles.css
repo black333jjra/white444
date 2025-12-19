@@ -257,7 +257,7 @@ header {
 .contenido-superpuesto h1 {
   margin: 0;
   font-size: var(--fs-h1);
-  font-family: "Aton", sans-serif;
+  font-family: "Anton", "Impact";
   letter-spacing: 1px;
   text-shadow: var(--shadow);
   color: var(--tx-sec);
@@ -439,4 +439,5 @@ footer .social-icons a img {
   max-width: 80%;
   height: auto;
 }
+
 
