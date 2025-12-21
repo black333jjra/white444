@@ -150,7 +150,12 @@
             <h1 data-i18n="hero_title"></h1>
             <p data-i18n="hero_text"></p>
             <div class="btn-servicios">
-              <a href="#servicios" class="button-ver" href="#servicios" data-i18n="hero_button"></a>
+              <a
+                href="#servicios"
+                class="button-ver"
+                href="#servicios"
+                data-i18n="hero_button"
+              ></a>
             </div>
           </div>
         </div>
@@ -158,20 +163,46 @@
 
       <!-- SERVICIOS DESTACADOS -->
       <section class="servicios">
+        <div class="servicios-cartel">
           <h2 data-i18n="serv_top"></h2>
-          <div class="servicios-cartel">
-              <h3 data-i18n="serv_carteles_title"></h3>
-              <p data-i18n="serv_carteles_text"></p>
+          <p class="descripcion" data-i18n="serv_carteles_text"></p>
 
-              <!-- Carrusel dentro del artículo -->
-              <div class="group">
-               <div class="carousel">
-                 <div class="card"><img src="img/carrusel1.webp" alt=""></div>
-                 <div class="card"><img src="img/carrusel2.webp" alt=""></div>
-                 <div class="card"><img src="img/carrusel3.webp" alt=""></div>
-               </div>
+          <!-- Carrusel dentro del artículo -->
+          <div class="group">
+            <div class="carousel">
+              <div class="card">
+                <div class="img-container">
+                  <img src="img/grafica-autoadhesiva-superficie-lisa.webp" alt="" />
+                </div>
+                <h3 data-i18n="cartel_frontlight"></h3>
+                <div class="container-information">
+                  <a class="information" href="/carteles.html" data-i18n="btn_information"></a>
+                  <a class="cotizar" href="https://wa.me/595994923174" target="_blank" aria-label="Chat en WhatsApp" data-i18n="btn_cotizar"></a>
+                </div>
               </div>
+              <div class="card">
+                <div class="img-container">
+                  <img src="img/letras-acrilicas-interior-negocio.webp" alt="" />
+                </div>
+                <h3 data-i18n="cartel_backlight"></h3>
+                <div class="container-information">
+                  <a class="information" href="/carteles.html" data-i18n="btn_information"></a>
+                  <a class="cotizar" href="https://wa.me/595994923174" target="_blank" aria-label="Chat en WhatsApp" data-i18n="btn_cotizar"></a>
+                </div>
+              </div>
+              <div class="card">
+                <div class="img-container">
+                  <img src="img/letras-corporeas-backlight-corporativo.webp" alt="" />
+                </div>
+                <h3 data-i18n="cartel_acm"></h3>
+                <div class="container-information">
+                  <a class="information" href="/carteles.html" data-i18n="btn_information"></a>
+                  <a class="cotizar" href="https://wa.me/595994923174" target="_blank" aria-label="Chat en WhatsApp" data-i18n="btn_cotizar"></a>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
       </section>
 
       <!-- VENTAJAS COMPETITIVAS -->
