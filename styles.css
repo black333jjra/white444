@@ -2,13 +2,16 @@
 
 /* ROOT */
 :root {
+  --color-pri: #ffffff;
+  --color-sec: #f2f2f2;
+  --color-ter: #969696;
+  --color-quin: #525252;
+  --color-cuar: #0d0d0d;
   --btn-color: #0071e3;
-  --bg-sec: #252525;
-  --bg-color: #ffffff;
-  --tx-color: #252525;
+  --tx-color: #0d0d0d;
   --tx-sec: #ffffff;
-  --sec-color: #c4c4c4;
   --shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+  --shadow-card: 0 0 7px rgba(0, 0, 0, 0.3); 
 
   /* Texto base */
   --fs-base: clamp(0.95rem, 1.1vw, 1.1rem);
@@ -32,6 +35,8 @@
   user-select: none;         /* Estándar */
 }
 
+
+
 body {
   scroll-behavior: smooth;
   font-size: var(--fs-base);
@@ -48,7 +53,7 @@ html, body, main {
 header {
   width: 100dvw;
   height: 70px;
-  background-color: var(--bg-color);
+  background-color: var(--color-pri);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -57,6 +62,10 @@ header {
 }
 
 .header-logo-mobile {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
 }
 
@@ -146,7 +155,7 @@ header {
   position: fixed;
   height: 100dvh;
   width: 80dvw;
-  background-color: var(--bg-color);
+  background-color: var(--color-pri);
   box-shadow: var(--shadow);
   z-index: 1050;
   pointer-events: none;
@@ -194,6 +203,7 @@ header {
 
 .menu-logo-container {
   display: flex;
+  position: absolute;
   align-items: center;
   align-content: center;
   position: absolute;
@@ -257,7 +267,7 @@ header {
 .contenido-superpuesto h1 {
   margin: 0;
   font-size: var(--fs-h1);
-  font-family: Impact, "Anton";
+  font-family: "Anton";
   letter-spacing: 1px;
   text-shadow: var(--shadow);
   color: var(--tx-sec);
@@ -275,50 +285,51 @@ header {
   box-sizing: border-box;
   background-color: var(--btn-color);
   border-radius: .8em;
+  & a {
+    padding: 15px;
+    margin: auto;
+    color: var(--tx-sec);
+    text-decoration: none;
+    font-size: var(--fs-subtitle);
+  }
 }
 
-.btn-servicios a {
-  padding: 15px;
-  margin: auto;
-  color: var(--tx-sec);
-  text-decoration: none;
-  font-size: var(--fs-subtitle);
-}
 
 /* Los Servicios Destacados*/
-.grid-servicios article {
-  text-align: center;
-}
-
-.btn-ver-mas {
-  display: inline-block;
-  font-size: var(--fs-small);
-  padding: 0.5rem 1rem;
-  background-color: var(--btn-color);
-  color: var(--tx-sec);
-  text-decoration: none;
-  border-radius: 0.5rem;
-}
 
 .servicios h2 {
   font-size: var(--fs-h2);
-  padding: 0 30px;
+  margin: 0;
   text-align: center;
   font-size: 2rem;
-  margin-bottom: 2rem;
+  color: var(--tx-color);
+}
+
+.descripcion {
+  margin: 20px 30px;
 }
 
 /* ============ CARRUSEL AUTOMÁTICO ============ */
 .servicios {
   width: 100dvw;
   display: flex;
-  flex-flow: column nowrap;
+  margin: 20px 0;
 }
 
 .servicios-cartel {
   width: 100%;
-  height: 70dvh;
-  background-color: var(--btn-color);
+  height: 80dvh;
+  background: linear-gradient(
+    to bottom,
+    var(--color-sec) 0%,
+    var(--color-ter) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 .carousel {
@@ -326,7 +337,6 @@ header {
   width: 100dvw;
   display: flex;
   overflow-x: auto;
-  overflow-y: hidden;
 }
 .carousel::-webkit-scrollbar {
   display: none;
@@ -334,30 +344,79 @@ header {
 
 .group{
   display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 450px;
 }
 
 .card {
-  border: solid 1px rgb(255, 247, 0);
+  margin: 5px 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: var(--tx-sec);
+  margin: 0 10px;
   flex: 0 0 20rem;
-  height: 400px;
-  background-color: var(--tx-color);
+  height: 450px;
+  background-color: var(--color-cuar);
   border-radius: 1em;
   text-align: center;
   align-content: center;
   box-sizing: border-box;
+  & .information {
+    color: var(--tx-sec);
+    text-decoration: none;
+    background-color: var(--btn-color);
+    padding: 10px;
+    width: 50%;
+    border-radius: 1em;
+    align-self: center;
+    margin-bottom: 15px;
+  }
+  & .img-container {
+  height: 300px;
+  margin: 10px;
+  border-radius: 1em;
+  }
+  & .img-container img {
+  height: 100%;
+  object-fit: contain;
+  }
 }
 
-.card:first-child {
+.card h3 {
+  align-self: flex-start;
+  font-size: var(--fs-subtitle);
   margin-left: 20px;
 }
 
-.card img {
-  height: 100%;
-  object-fit: contain;
+.container-information {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-flow: row nowrap;
+  gap: 10px;
 }
 
+.cotizar {
+  margin-bottom: 15px;
+  color: var(--tx-sec);
+  text-decoration: none;
+  background-color: transparent;
+  border: 3px solid var(--btn-color);
+  padding: 8px;
+  width: 30%;
+  border-radius: 1em;
+  align-self: center;
+  box-sizing: border-box;
+}
+
+.card:first-child {
+  margin-left: 30px;
+}
+
+.card:last-child {
+  margin-right: 30px;
+}
 /* ============ BOTÓN FLOTANTE DE WHATSAPP ============ */
 .whatsapp-float {
   position: fixed;
@@ -387,7 +446,7 @@ header {
 
 /* ============ FOOTER ============ */
 footer {
-  background-color: var(--bg-sec);
+  background-color: var(--color-cuar);
   color: var(--tx-sec);
   padding: 20px;
   box-sizing: border-box;
@@ -438,6 +497,4 @@ footer .social-icons a img {
 .logo-inicio img {
   max-width: 80%;
   height: auto;
-
 }
-
