@@ -74,3 +74,31 @@ const soportados = ["es","pt","en"];
 const inicial = guardado ?? (soportados.includes(nav) ? nav : "es");
 cargarIdioma(inicial);
 document.getElementById("lang").value = inicial;
+
+// Botones del carrusel //
+const carousel = document.querySelector('.carousel');
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev');
+
+const card = document.querySelector('.card');
+const cardWidth = card.offsetWidth + 20;
+
+function updateButtons() {
+  prevBtn.classList.toggle('disabled', carousel.scrollLeft === 0);
+  nextBtn.classList.toggle('disabled', carousel.scrollLeft + carousel.offsetWidth >= carousel.scrollWidth);
+};
+
+nextBtn.addEventListener('click', () => {
+  carousel.scrollBy({ left: card.offsetWidth, behavior: 'smooth' });
+  setTimeout(updateButtons, 200);
+});
+
+prevBtn.addEventListener('click', () => {
+  carousel.scrollBy({ left: -card.offsetWidth, behavior: 'smooth' });
+  setTimeout(updateButtons, 200); // esperar animación
+});
+
+carousel.addEventListener('scroll', updateButtons);
+
+// inicialización
+updateButtons();
