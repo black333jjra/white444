@@ -4,9 +4,10 @@
 :root {
   --color-pri: #ffffff;
   --color-sec: #f2f2f2;
-  --color-ter: #969696;
-  --color-quin: #525252;
-  --color-cuar: #0d0d0d;
+  --color-ter: #d9d9d9;
+  --color-cuar: #8c8c8c;
+  --color-quin: #595959;
+  --color-sext: #262626;
   --btn-color: #0071e3;
   --tx-color: #0d0d0d;
   --tx-sec: #ffffff;
@@ -332,19 +333,66 @@ header {
   text-align: center;
 }
 
+.group{
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-bottom: 10px;
+}
+
 .carousel {
   margin: 0 auto;
   width: 100dvw;
   display: flex;
   overflow-x: auto;
-}
-.carousel::-webkit-scrollbar {
-  display: none;
+  scroll-behavior: smooth;
 }
 
-.group{
+/* Botones */
+.prev,
+.next {
+  position: absolute;
+  bottom: -40px;
+  z-index: 30;
+
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+
+  background-color: var(--color-quin);
+  color: var(--color-pri);
+  font-size: 1.3rem;
+
   display: flex;
-  width: 450px;
+  align-items: center;
+  justify-content: center;
+
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.prev {
+  right: 65px; /* espacio para el botón next */
+}
+
+.next {
+  right: 20px;
+}
+
+.prev:active,
+.next:active {
+  transform: scale(0.9);
+}
+
+.prev.disabled,
+.next.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+
+.carousel::-webkit-scrollbar {
+  display: none;
 }
 
 .card {
@@ -357,7 +405,7 @@ header {
   margin: 0 10px;
   flex: 0 0 20rem;
   height: 450px;
-  background-color: var(--color-cuar);
+  background-color: var(--color-sext);
   border-radius: 1em;
   text-align: center;
   align-content: center;
@@ -446,7 +494,7 @@ header {
 
 /* ============ FOOTER ============ */
 footer {
-  background-color: var(--color-cuar);
+  background-color: var(--color-sext);
   color: var(--tx-sec);
   padding: 20px;
   box-sizing: border-box;
